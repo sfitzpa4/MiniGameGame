@@ -46,7 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AccelerometerInput.cs" />
+     <Compile Include="Assets\Scripts\AccelerometerInput.cs" />
      <Compile Include="Assets\Scripts\Ball.cs" />
      <Compile Include="Assets\Scripts\BrickCollision.cs" />
      <Compile Include="Assets\Scripts\DeadZone.cs" />
