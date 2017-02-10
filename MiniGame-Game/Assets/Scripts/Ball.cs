@@ -13,9 +13,9 @@ public class Ball : MonoBehaviour {
 	void Awake () {
 		rb = GetComponent<Rigidbody>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		if (Input.GetButtonDown("Fire1") && ballInPlay == false)
 		{
 			transform.parent = null;
