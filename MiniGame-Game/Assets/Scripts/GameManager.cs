@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 	
 	public GameObject gameOver;
 	public GameObject winner;
-	public GameObject brickParticle;
+	//public GameObject brickParticle;
 	public GameObject paddle;
 	public GameObject bricksModel;
 	
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour {
 	{
 		lives--;
 		livesText.text = "Lives: " + lives;
-		Instantiate(brickParticle, clonePaddle.transform.position, Quaternion.identity);
+		//Instantiate(brickParticle, clonePaddle.transform.position, Quaternion.identity);
 		Destroy(clonePaddle);
 		Invoke ("SetupPaddle", resetDelay);
 		CheckGameOver();
