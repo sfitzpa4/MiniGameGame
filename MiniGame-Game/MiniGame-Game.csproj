@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\CollectableCollision.cs" />
     <Compile Include="Assets\Scripts\DeadZone.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\LoadOnClick.cs" />
     <Compile Include="Assets\Scripts\Paddle.cs" />
     <Compile Include="Assets\Scripts\TimedDestroy.cs" />
   </ItemGroup>
