@@ -13,7 +13,11 @@ public class AccelerometerInput : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        Vector3 movement = new Vector3(Input.acceleration.x, 0.0f, -Input.acceleration.z);
+        float moveHorizontal = Input.acceleration.x;
+        float moveVertical = Input.acceleration.z;
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, (-moveVertical-0.50f));
+        Debug.Log(-moveVertical);
         rb.AddForce(movement * speed);
+        
     }
 }

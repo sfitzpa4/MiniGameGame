@@ -83,10 +83,13 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AccelerometerInput.cs" />
     <Compile Include="Assets\Scripts\Ball.cs" />
+    <Compile Include="Assets\Scripts\BallRollMenu.cs" />
+    <Compile Include="Assets\Scripts\BallRollerManager.cs" />
     <Compile Include="Assets\Scripts\BrickCollision.cs" />
     <Compile Include="Assets\Scripts\Bricks.cs" />
     <Compile Include="Assets\Scripts\CollectableCollision.cs" />
     <Compile Include="Assets\Scripts\DeadZone.cs" />
+    <Compile Include="Assets\Scripts\DeathBoundary.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\LoadOnClick.cs" />
     <Compile Include="Assets\Scripts\Paddle.cs" />
