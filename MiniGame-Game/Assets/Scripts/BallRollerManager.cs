@@ -43,7 +43,7 @@ public class BallRollerManager : MonoBehaviour {
 
     private void Update()
     {
-        if (UIPanel.activeSelf == false && gameStart == false)
+		if (UIPanel.activeSelf == false && gameStart == false)
         {
             Setup();
             gameStart = true;
