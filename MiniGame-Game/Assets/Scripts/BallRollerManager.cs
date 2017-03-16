@@ -25,7 +25,7 @@ public class BallRollerManager : MonoBehaviour {
     private GameObject cloneCapsules;
 
     public GameObject UIPanel;
-    private bool gameStart = false;
+    
 
     // Use this for initialization
     void Start()
@@ -38,16 +38,18 @@ public class BallRollerManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        
+        Time.timeScale = 0;
+        if (UIPanel.activeSelf == false)
+        {
+            Setup();
+        }
+
+
     }
 
     private void Update()
     {
-		if (UIPanel.activeSelf == false && gameStart == false)
-        {
-            Setup();
-            gameStart = true;
-        }
+       
     }
     
 

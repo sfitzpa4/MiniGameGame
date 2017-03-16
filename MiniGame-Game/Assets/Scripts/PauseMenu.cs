@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour {
 
 	public GameObject UIPanel;
+    public GameObject HighScorePanel;
 	public GameObject loadingImage;
 
 	// Use this for initialization
@@ -32,4 +33,11 @@ public class PauseMenu : MonoBehaviour {
 		//loadingImage.SetActive(true);
 		SceneManager.LoadScene(0);
 	}
+
+    public void ScoreButton ()
+    {
+        Time.timeScale = 0;
+        UIPanel.SetActive(false);
+        HighScorePanel.SetActive(true);
+    }
 }

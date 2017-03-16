@@ -9,6 +9,12 @@ public class HighScoreManager : MonoBehaviour {
 
     private string connectionString;
 
+    private List<HighScore> highScores = new List<HighScore>();
+
+    public GameObject scorePrefab;
+
+    public Transform scoreParent;
+
 	// Use this for initialization
 	void Start () {
         connectionString = "URI=file:" + Application.dataPath + "/testdb.db";
@@ -44,6 +50,20 @@ public class HighScoreManager : MonoBehaviour {
                     reader.Close();
                 }
             }
+        }
+    }
+
+    private void ShowScores()
+    {
+        for (int i = 0; i < highScores.Count; i++)
+        {
+            GameObject tmpObject = Instantiate(scorePrefab);
+
+            HighScore tmpScore = highScores[i];
+
+            tmpObject.GetComponent<HighScoreScript>().SetScore(tmpScore.Name, tmpScore.Score.ToString(), "#" + (i + 1).ToString());
+
+            tmpObject.transform.SetParent(scoreParent);
         }
     }
 }

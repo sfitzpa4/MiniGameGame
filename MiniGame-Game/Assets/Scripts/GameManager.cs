@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour {
 	public int lives = 3;
 	public int bricks = 20;
 	public float resetDelay = 1f;
+    private int score = 0;
 	public Text livesText;
+    public Text scoreText;
 	
 	public GameObject gameOver;
 	public GameObject winner;
@@ -80,6 +82,8 @@ public class GameManager : MonoBehaviour {
 	public void DestroyBrick()
 	{
 		bricks--;
-		CheckGameOver();
+        score += 100;
+        scoreText.text = "Score: " + score;
+        CheckGameOver();
 	}
 }

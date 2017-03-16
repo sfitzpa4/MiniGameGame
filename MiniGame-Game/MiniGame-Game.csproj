@@ -97,7 +97,9 @@
     <Compile Include="Assets\Scripts\DeadZone.cs" />
     <Compile Include="Assets\Scripts\DeathBoundary.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\HighScore.cs" />
     <Compile Include="Assets\Scripts\HighScoreManager.cs" />
+    <Compile Include="Assets\Scripts\HighScoreScript.cs" />
     <Compile Include="Assets\Scripts\LoadOnClick.cs" />
     <Compile Include="Assets\Scripts\Paddle.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
