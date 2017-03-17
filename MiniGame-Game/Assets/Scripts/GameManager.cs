@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 
 	public int lives = 3;
 	public int bricks = 20;
+    public int brickslvl2 = 22;
 	public float resetDelay = 1f;
     private int score = 0;
 	public Text livesText;
@@ -17,11 +18,13 @@ public class GameManager : MonoBehaviour {
 	public GameObject winner;
 	//public GameObject brickParticle;
 	public GameObject paddle;
-	public GameObject bricksModel;
+	public GameObject bricksLevel1;
+    public GameObject bricksLevel2;
 	
 	public static GameManager instance = null;
 	
 	private GameObject clonePaddle;
+    private int level = 1;
 	
 	// Use this for initialization
 	void Start () {
@@ -37,16 +40,35 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Setup () {
 		clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
-		Instantiate(bricksModel, transform.position, Quaternion.identity);
+		Instantiate(bricksLevel1, transform.position, Quaternion.identity);
 	}
+
+    void NextLevel()
+    {
+        if (level == 2)
+        {
+            Debug.Log("Advancing to next level");
+            bricks = brickslvl2;
+            Instantiate(bricksLevel2, transform.position, Quaternion.identity);
+        }
+    }
 	
 	void CheckGameOver() {
 	
 		if (bricks < 1)
 		{
-			winner.SetActive(true);
-			Time.timeScale = 0.25f;
-			Invoke("Reset", resetDelay);
+			
+			//Time.timeScale = 0.25f;
+            if (level == 1)
+            {
+                Invoke("NextLevel", resetDelay);
+                level++;
+            }
+            if (level == 3)
+            {
+                winner.SetActive(true);
+                Invoke("Reset", resetDelay);
+            }
 		}
 		
 		if (lives < 1) 

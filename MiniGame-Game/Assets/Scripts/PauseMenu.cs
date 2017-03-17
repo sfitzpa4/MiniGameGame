@@ -40,4 +40,10 @@ public class PauseMenu : MonoBehaviour {
         UIPanel.SetActive(false);
         HighScorePanel.SetActive(true);
     }
+
+    public void ReturnButton()
+    {
+        HighScorePanel.SetActive(false);
+        UIPanel.SetActive(true);
+    }
 }
