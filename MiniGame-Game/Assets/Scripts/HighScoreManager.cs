@@ -15,10 +15,11 @@ public class HighScoreManager : MonoBehaviour {
 
     public Transform scoreParent;
 
+	public int topScores;
+
 	// Use this for initialization
 	void Start () {
         connectionString = "URI=file:" + Application.dataPath + "/testdb.db";
-        //GetScores();
 		ShowScores ();
 	}
 	
@@ -45,7 +46,7 @@ public class HighScoreManager : MonoBehaviour {
                 {
                     while (reader.Read())
                     {
-                        Debug.Log(reader.GetString(1) + " " + reader.GetInt32(2));
+						Debug.Log(reader.GetString(1) + " " + reader.GetInt32(2) + " " + reader.GetInt32(0));
 						highScores.Add(new HighScore(reader.GetInt32(0),reader.GetInt32(2),reader.GetString(1)));
                     }
 
@@ -54,6 +55,8 @@ public class HighScoreManager : MonoBehaviour {
                 }
             }
         }
+
+		highScores.Sort ();
     }
 
 	private void InsertScore(string name, int newScore)
@@ -93,17 +96,20 @@ public class HighScoreManager : MonoBehaviour {
     private void ShowScores()
     {
 		GetScores ();
-        for (int i = 0; i < highScores.Count; i++)
+        for (int i = 0; i < topScores; i++)
         {
-            GameObject tmpObject = Instantiate(scorePrefab);
+			if (i <= highScores.Count - 1) 
+			{
+				GameObject tmpObject = Instantiate (scorePrefab);
 
-            HighScore tmpScore = highScores[i];
+				HighScore tmpScore = highScores [i];
 
-            tmpObject.GetComponent<HighScoreScript>().SetScore(tmpScore.Name, tmpScore.Score.ToString(), "#" + (i + 1).ToString());
+				tmpObject.GetComponent<HighScoreScript> ().SetScore (tmpScore.Name, tmpScore.Score.ToString (), "#" + (i + 1).ToString ());
 
-            tmpObject.transform.SetParent(scoreParent, false);
+				tmpObject.transform.SetParent (scoreParent, false);
 
-			tmpObject.GetComponent<RectTransform> ().localScale = new Vector3 (1, 1, 1);
+				tmpObject.GetComponent<RectTransform> ().localScale = new Vector3 (1, 1, 1);
+			}
         }
     }
 }
