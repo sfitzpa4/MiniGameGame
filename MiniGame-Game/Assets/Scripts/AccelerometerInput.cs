@@ -13,11 +13,23 @@ public class AccelerometerInput : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        float moveHorizontal = Input.acceleration.x;
-        float moveVertical = Input.acceleration.z;
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, (-moveVertical-0.50f));
-        Debug.Log(-moveVertical);
-        rb.AddForce(movement * speed);
-        
+
+        if (SystemInfo.deviceType == DeviceType.Desktop)
+        {
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
+
+            Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+
+            rb.AddForce(movement * speed);
+        }
+        else
+        {
+            Vector3 movement = new Vector3(Input.acceleration.x, Input.acceleration.z, Input.acceleration.y) * 9.8f;
+            Debug.Log(Input.acceleration.x);
+            Debug.Log(Input.acceleration.z);
+            rb.AddForce(movement, ForceMode.Acceleration);
+        }
+
     }
 }

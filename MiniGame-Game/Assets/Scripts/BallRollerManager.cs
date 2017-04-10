@@ -17,14 +17,20 @@ public class BallRollerManager : MonoBehaviour {
     public float resetDelay = 1f;
 
     public GameObject ball;
-    public GameObject capsules;
+    public GameObject capsulesLvl1;
+    public GameObject capsulesLvl2;
+    public GameObject hazardsLvl1;
+    public GameObject hazardsLvl2;
 
     public static BallRollerManager instance = null;
 
     private GameObject cloneBall;
     private GameObject cloneCapsules;
+    private GameObject cloneHazards;
 
     public GameObject UIPanel;
+
+    private int level = 1;
     
 
     // Use this for initialization
@@ -57,7 +63,8 @@ public class BallRollerManager : MonoBehaviour {
     void Setup () {
         
         cloneBall = Instantiate(ball, transform.position, Quaternion.identity) as GameObject;
-        cloneCapsules = Instantiate(capsules, transform.position, Quaternion.identity) as GameObject;
+        cloneCapsules = Instantiate(capsulesLvl1, transform.position, Quaternion.identity) as GameObject;
+        cloneHazards = Instantiate(hazardsLvl1, transform.position, Quaternion.identity) as GameObject;
         //Instantiate(capsules, transform.position, Quaternion.identity);
         
     }
@@ -70,14 +77,34 @@ public class BallRollerManager : MonoBehaviour {
         SceneManager.LoadScene(scene.name);
     }
 
+    void NextLevel()
+    {
+        if (level == 2)
+        {
+            numCapsules = 4;
+            Debug.Log("Advancing to next level");
+            //cloneBall = Instantiate(ball, transform.position, Quaternion.identity) as GameObject;
+            cloneCapsules = Instantiate(capsulesLvl2, transform.position, Quaternion.identity) as GameObject;
+
+        }
+    }
+
     void CheckGameOver()
     {
 
         if (numCapsules < 1)
         {
-            winner.SetActive(true);
-            Time.timeScale = 0.25f;
-            Invoke("Reset", resetDelay);
+            if (level == 1)
+            {
+                Invoke("NextLevel", resetDelay);
+                level++;
+            }
+            if (level == 2)
+            {
+                winner.SetActive(true);
+                Time.timeScale = 0.25f;
+                Invoke("Reset", resetDelay);
+            }
         }
 
         if (lives < 1)
