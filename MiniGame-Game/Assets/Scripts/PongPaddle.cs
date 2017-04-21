@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class PongPaddle : NetworkBehaviour {
-
-	public Camera cam1;
-	public Camera cam2;
 	private NetworkStartPosition[] spawnPoints;
 	
 	// Update is called once per frame
@@ -23,19 +20,23 @@ public class PongPaddle : NetworkBehaviour {
 	{
 		GetComponent<MeshRenderer>().material.color = Color.green;
 		spawnPoints = FindObjectsOfType<NetworkStartPosition> ();
-		if (this.transform.position == spawnPoints [0].transform.position) 
+		//if (this.transform.position == spawnPoints [0].transform.position) 
+		if (isServer)
 		{
-			cam1.enabled = true;
-			cam2.enabled = false;
-			cam1.tag = "MainCamera";
-			cam2.tag = "Untagged";
+			//cam2.gameObject.SetActive (false);
+			//cam1.gameObject.SetActive (true);
+			//cam2.enabled = false;
+			//cam1.enabled = true;
+			Debug.Log ("Server");
 		} 
 		else 
 		{
-			cam2.enabled = true;
-			cam1.enabled = false;
-			cam2.tag = "MainCamera";
-			cam1.tag = "Untagged";
+			//cam1.transform.Rotate (0,0,180);
+			//cam1.gameObject.SetActive (false);
+			//cam2.gameObject.SetActive (true);
+			//cam1.enabled = false;
+			//cam2.enabled = true;
+			Debug.Log ("Client");
 		}
 	}
 }

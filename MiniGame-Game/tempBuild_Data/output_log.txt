@@ -23,19 +23,40 @@ Platform assembly: C:\Users\Cooper\Documents\CS482\MiniGameGame\MiniGame-Game\te
 Loading C:\Users\Cooper\Documents\CS482\MiniGameGame\MiniGame-Game\tempBuild_Data\Managed\Mono.Data.Sqlite.dll into Unity Child Domain
 Platform assembly: C:\Users\Cooper\Documents\CS482\MiniGameGame\MiniGame-Game\tempBuild_Data\Managed\System.Data.dll (this message is harmless)
 Loading C:\Users\Cooper\Documents\CS482\MiniGameGame\MiniGame-Game\tempBuild_Data\Managed\System.Data.dll into Unity Child Domain
-- Completed reload, in  0.197 seconds
+- Completed reload, in  0.151 seconds
 Platform assembly: C:\Users\Cooper\Documents\CS482\MiniGameGame\MiniGame-Game\tempBuild_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Cooper\Documents\CS482\MiniGameGame\MiniGame-Game\tempBuild_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 3840x1080 at -1920,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.150388 ms
+UnloadTime: 0.981345 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 7f0 -> priority: 1 
-  Thread -> id: 3344 -> priority: 1 
-Log: connection {1} has been disconnected by timeout; address {::ffff:127.0.0.1:50135}
-ServerDisconnected due to error: Timeout
+  Thread -> id: 322c -> priority: 1 
+  Thread -> id: 2650 -> priority: 1 
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.763645 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 301.
+Total: 0.188360 ms (FindLiveObjects: 0.029582 ms CreateObjectMapping: 0.025658 ms MarkObjects: 0.113197 ms  DeleteObjects: 0.006339 ms)
+
+Client Camera
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Client
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Server
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Server
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
