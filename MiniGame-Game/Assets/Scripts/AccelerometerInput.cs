@@ -4,32 +4,29 @@ using UnityEngine;
 
 public class AccelerometerInput : MonoBehaviour {
 
-    public float speed = 1f;
-    private Rigidbody rb;
+    public bool isFlat = true;
+    public float speed;
+    private Rigidbody rigidb;
 
     void Awake ()
     {
-        rb = GetComponent<Rigidbody>();
+        rigidb = GetComponent<Rigidbody>();
     }
 	// Update is called once per frame
 	void Update () {
 
-        if (SystemInfo.deviceType == DeviceType.Desktop)
-        {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
+        //Vector3 tilt = Input.acceleration;
 
-            Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
-            rb.AddForce(movement * speed);
-        }
-        else
-        {
-            Vector3 movement = new Vector3(Input.acceleration.x, Input.acceleration.z, Input.acceleration.y) * 9.8f;
-            Debug.Log(Input.acceleration.x);
-            Debug.Log(Input.acceleration.z);
-            rb.AddForce(movement, ForceMode.Acceleration);
-        }
+        //if (isFlat)
+        //{
+            //tilt = Quaternion.Euler(90, 0, 0) * tilt;
+        //}
+        Vector3 movement = new Vector3(Input.acceleration.x * 5, 0.0f, Input.acceleration.y * 5);
+        //Debug.Log(Input.acceleration.x);
+        //Debug.Log(Input.acceleration.y);
+        rigidb.AddForce(movement * speed * Time.deltaTime);
+        //rigidb.AddForce(tilt);
+        
 
     }
 }
