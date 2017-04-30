@@ -68,5 +68,10 @@ public class PongPaddle : NetworkBehaviour {
 			//cam2.enabled = true;
 			Debug.Log ("Client");
 		}
+
+		if (Application.platform == RuntimePlatform.IPhonePlayer) 
+		{
+			this.transform.Translate (0, 0, -0.1f);
+		}
 	}
 }
