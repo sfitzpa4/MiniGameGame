@@ -73,5 +73,6 @@ public class PongPaddle : NetworkBehaviour {
 		{
 			this.transform.Translate (0, 0, -0.1f);
 		}
+		this.transform.Translate (0, 0, -1f);
 	}
 }

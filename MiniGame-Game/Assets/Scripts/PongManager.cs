@@ -7,7 +7,7 @@ public class PongManager : NetworkBehaviour {
 
 	public GameObject camera;
 	public GameObject ball;
-	public GameObject paddle;
+	public GameObject networkManager;
 
 	private GameObject cloneCamera;
 	private GameObject cloneBall;
@@ -30,18 +30,11 @@ public class PongManager : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Network.connections.Length == 2) {
+		if (gameStarted == false && NetworkServer.connections.Count == 2) {
 			Debug.Log ("Connected");
 			cloneBall = Instantiate (ball, ball.transform.position, Quaternion.identity) as GameObject;
+			NetworkServer.Spawn (cloneBall);
 			gameStarted = true;
-		} else {
-			gameStarted = false;
 		}
-		Debug.Log (paddle.GetComponent<NetworkIdentity>().connectionToClient.playerControllers.ToArray().Length);
-	}
-
-	void OnPlayerConnected(NetworkPlayer player)
-	{
-		Debug.Log ("Player " + playerCount + " connected from " + player.ipAddress + ":" + player.port);
 	}
 }

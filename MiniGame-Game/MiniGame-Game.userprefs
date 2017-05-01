@@ -1,15 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PongPaddle.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PongManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\HighScoreManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\HighScoreScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\HighScore.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PongPaddle.cs" Line="37" Column="15" />
-      <File FileName="Assets\Scripts\PongCamera.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PongManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Paddle.cs" Line="7" Column="2" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PongManager.cs" Line="40" Column="52" />
+      <File FileName="Assets/Scripts/PongPaddle.cs" Line="45" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
