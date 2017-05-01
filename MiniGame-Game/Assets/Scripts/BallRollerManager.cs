@@ -19,8 +19,10 @@ public class BallRollerManager : MonoBehaviour {
     public GameObject ball;
     public GameObject capsulesLvl1;
     public GameObject capsulesLvl2;
+    public GameObject capsulesLvl3;
     public GameObject hazardsLvl1;
     public GameObject hazardsLvl2;
+    public GameObject hazardsLvl3;
 
     public static BallRollerManager instance = null;
 
@@ -81,13 +83,22 @@ public class BallRollerManager : MonoBehaviour {
     {
         if (level == 2)
         {
-            Debug.Log("Advancing to next level");
+            Debug.Log("Advancing to level 2");
             Destroy(cloneBall);
             Invoke("SetupBall", resetDelay);
-            //cloneBall = Instantiate(ball, transform.position, Quaternion.identity) as GameObject;
             cloneCapsules = Instantiate(capsulesLvl2, transform.position, Quaternion.identity) as GameObject;
             Destroy(cloneHazards);
             cloneHazards = Instantiate(hazardsLvl2, transform.position, Quaternion.identity) as GameObject;
+        }
+        if (level == 3)
+        {
+            Debug.Log("Advancing to level 3");
+            Destroy(cloneBall);
+            Invoke("SetupBall", resetDelay);
+            Destroy(cloneHazards);
+            cloneCapsules = Instantiate(capsulesLvl3, transform.position, Quaternion.identity) as GameObject;
+            cloneHazards = Instantiate(hazardsLvl3, transform.position, Quaternion.identity) as GameObject;
+
         }
     }
 
@@ -102,7 +113,13 @@ public class BallRollerManager : MonoBehaviour {
                 Invoke("NextLevel", resetDelay);
                 level++;
             }
-            if (level == 3)
+            else if (level == 2)
+            {
+                numCapsules = 4;
+                Invoke("NextLevel", resetDelay);
+                level++;
+            }
+            else if (level == 3)
             {
                 winner.SetActive(true);
                 Time.timeScale = 0.25f;

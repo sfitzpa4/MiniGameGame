@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 	public int lives = 3;
 	public int bricks = 20;
     public int brickslvl2 = 22;
+    public int brickslvl3 = 24;
 	public float resetDelay = 1f;
     private int score = 0;
 	public Text livesText;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject paddle;
 	public GameObject bricksLevel1;
     public GameObject bricksLevel2;
+    public GameObject bricksLevel3;
 	
 	public static GameManager instance = null;
 	
@@ -45,11 +47,16 @@ public class GameManager : MonoBehaviour {
 
     void NextLevel()
     {
+        Debug.Log(level);
         if (level == 2)
         {
-            Debug.Log("Advancing to next level");
-            bricks = brickslvl2;
+            Debug.Log("Advancing to level 2");
             Instantiate(bricksLevel2, transform.position, Quaternion.identity);
+        }
+        if (level == 3)
+        {
+            Debug.Log("Advancing to level 3");
+            Instantiate(bricksLevel3, transform.position, Quaternion.identity);
         }
     }
 	
@@ -57,15 +64,25 @@ public class GameManager : MonoBehaviour {
 	
 		if (bricks < 1)
 		{
-			
-			//Time.timeScale = 0.25f;
+            //Time.timeScale = 0.25f;
             if (level == 1)
             {
-                Invoke("NextLevel", resetDelay);
-                level++;
+                bricks = brickslvl2;
+                
+                Invoke("NextLevel", 0);
+
+                level += 1;
+                
             }
-            if (level == 3)
+            else if (level == 2)
             {
+                bricks = brickslvl3;
+                Invoke("NextLevel", 0);
+                level += 1;
+            }
+            else if (level == 3)
+            {
+                
                 winner.SetActive(true);
                 Invoke("Reset", resetDelay);
             }
