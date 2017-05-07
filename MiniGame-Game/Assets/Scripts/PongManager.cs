@@ -12,7 +12,8 @@ public class PongManager : NetworkBehaviour {
 	private GameObject cloneCamera;
 	private GameObject cloneBall;
 	private bool gameStarted = false;
-	private int playerCount = 0;
+	private int player1Score = 0;
+	private int player2Score = 0;
 
 	public static PongManager instance = null;
 
@@ -30,11 +31,35 @@ public class PongManager : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (gameStarted == false && NetworkServer.connections.Count == 2) {
+		if (isServer && gameStarted == false && NetworkServer.connections.Count == 2) {
 			Debug.Log ("Connected");
-			cloneBall = Instantiate (ball, ball.transform.position, Quaternion.identity) as GameObject;
-			NetworkServer.Spawn (cloneBall);
+			CmdSpawnBall ();
 			gameStarted = true;
+		}
+		CheckForPoint ();
+	}
+
+	[Command]
+	void CmdSpawnBall()
+	{
+		cloneBall = Instantiate (ball, ball.transform.position, Quaternion.identity);
+		NetworkServer.Spawn (cloneBall);
+	}
+
+	void CheckForPoint()
+	{
+		if (cloneBall == null) {
+			return;
+		}
+		if (cloneBall.transform.position.y > 15) 
+		{
+			Debug.Log ("Player 1 Scored");
+			player1Score++;
+		}
+		else if(cloneBall.transform.position.y < -15)
+		{
+			Debug.Log ("Player 2 Scored");
+			player2Score++;
 		}
 	}
 }

@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class PongPaddle : NetworkBehaviour {
 
-	public float paddleSpeed = 1f;
+	public float paddleSpeed = 0.1f;
 	private Vector3 playerPos = new Vector3 (0, -9.5f, 0);
 
 	private NetworkStartPosition[] spawnPoints;
@@ -21,28 +21,30 @@ public class PongPaddle : NetworkBehaviour {
 		{
 			foreach (Touch touch in Input.touches) {
 				if (touch.position.x < Screen.width / 2) {
-					/*
-					float xPos = transform.position.x + (-paddleSpeed);
-					playerPos = new Vector3 (Mathf.Clamp (xPos, -8f, 8f), -9.5f, 0f);
+					float xPos = transform.position.x + (-1 * paddleSpeed);
+					float yPos = transform.position.y;
+					playerPos = new Vector3 (Mathf.Clamp (xPos, -2.2f, 2.2f), yPos, 0f);
 					transform.position = playerPos;
-					*/
-					var x = -1 * Time.deltaTime * 5.0f;
-					transform.Translate(x, 0, 0);
+					//var x = -1 * Time.deltaTime * 5.0f;
+					//transform.Translate(x, 0, 0);
 				} else if (touch.position.x > Screen.width / 2) {
-					/*
-					float xPos2 = transform.position.x + (paddleSpeed);
-					playerPos = new Vector3 (Mathf.Clamp (xPos2, -8f, 8f), -9.5f, 0f);
+					float xPos = transform.position.x + (1 * paddleSpeed);
+					float yPos = transform.position.y;
+					playerPos = new Vector3 (Mathf.Clamp (xPos, -2.2f, 2.2f), yPos, 0f);
 					transform.position = playerPos;
-					*/
-					var x = 1 * Time.deltaTime * 5.0f;
-					transform.Translate(x, 0, 0);
+					//var x = 1 * Time.deltaTime * 5.0f;
+					//transform.Translate(x, 0, 0);
 				}
 			}
 		} 
 		else
 		{
-			var x = Input.GetAxis("Horizontal") * Time.deltaTime * 5.0f;
-			transform.Translate(x, 0, 0);
+			//var x = Input.GetAxis("Horizontal") * Time.deltaTime * 5.0f;
+			//transform.Translate(x, 0, 0);
+			float xPos = transform.position.x + (Input.GetAxis("Horizontal") * paddleSpeed);
+			float yPos = transform.position.y;
+			playerPos = new Vector3 (Mathf.Clamp (xPos, -2.2f, 2.2f), yPos, 0f);
+			transform.position = playerPos;
 		}
 	}
 
