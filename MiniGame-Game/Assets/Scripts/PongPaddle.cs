@@ -8,8 +8,6 @@ public class PongPaddle : NetworkBehaviour {
 	public float paddleSpeed = 0.1f;
 	private Vector3 playerPos = new Vector3 (0, -9.5f, 0);
 
-	private NetworkStartPosition[] spawnPoints;
-	
 	// Update is called once per frame
 	void Update () {
 		if (!isLocalPlayer) 
@@ -23,14 +21,14 @@ public class PongPaddle : NetworkBehaviour {
 				if (touch.position.x < Screen.width / 2) {
 					float xPos = transform.position.x + (-1 * paddleSpeed);
 					float yPos = transform.position.y;
-					playerPos = new Vector3 (Mathf.Clamp (xPos, -2.2f, 2.2f), yPos, 0f);
+					playerPos = new Vector3 (Mathf.Clamp (xPos, -2.1f, 2.1f), yPos, 0f);
 					transform.position = playerPos;
 					//var x = -1 * Time.deltaTime * 5.0f;
 					//transform.Translate(x, 0, 0);
 				} else if (touch.position.x > Screen.width / 2) {
 					float xPos = transform.position.x + (1 * paddleSpeed);
 					float yPos = transform.position.y;
-					playerPos = new Vector3 (Mathf.Clamp (xPos, -2.2f, 2.2f), yPos, 0f);
+					playerPos = new Vector3 (Mathf.Clamp (xPos, -2.1f, 2.1f), yPos, 0f);
 					transform.position = playerPos;
 					//var x = 1 * Time.deltaTime * 5.0f;
 					//transform.Translate(x, 0, 0);
@@ -43,7 +41,7 @@ public class PongPaddle : NetworkBehaviour {
 			//transform.Translate(x, 0, 0);
 			float xPos = transform.position.x + (Input.GetAxis("Horizontal") * paddleSpeed);
 			float yPos = transform.position.y;
-			playerPos = new Vector3 (Mathf.Clamp (xPos, -2.2f, 2.2f), yPos, 0f);
+			playerPos = new Vector3 (Mathf.Clamp (xPos, -2.1f, 2.1f), yPos, 0f);
 			transform.position = playerPos;
 		}
 	}
@@ -51,7 +49,7 @@ public class PongPaddle : NetworkBehaviour {
 	public override void OnStartLocalPlayer()
 	{
 		GetComponent<MeshRenderer>().material.color = Color.green;
-		spawnPoints = FindObjectsOfType<NetworkStartPosition> ();
+		//spawnPoints = FindObjectsOfType<NetworkStartPosition> ();
 		//if (this.transform.position == spawnPoints [0].transform.position) 
 		if (isServer)
 		{

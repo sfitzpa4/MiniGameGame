@@ -67,6 +67,8 @@
      <Compile Include="Assets\Scripts\PongCamera.cs" />
      <Compile Include="Assets\Scripts\PongManager.cs" />
      <Compile Include="Assets\Scripts\PongPaddle.cs" />
+     <Compile Include="Assets\Scripts\PongPauseMenu.cs" />
+     <Compile Include="Assets\Scripts\PongScore.cs" />
      <Compile Include="Assets\Scripts\TimedDestroy.cs" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
